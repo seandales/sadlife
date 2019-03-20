@@ -13,31 +13,23 @@ namespace WindowsFormsApp2
 {
     public partial class Inventorycs : Form
     {
-        public Form refToDash { get; set; }
+        public Main refToDash { get; set; }
         public MySqlConnection conn;
-        //MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306;username=root; password=root");
 
         public Inventorycs()
         {
             InitializeComponent();
-            conn = new MySqlConnection("Server=localhost;Database=radio;Uid=root;Pwd=root;");
+            conn = new MySqlConnection("Server=localhost;Database=radio;Uid=root;Pwd=root;SslMode=none;");
         }
-
-        /**
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        **/
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            this.Hide();
             InventoryAddItem invadd = new InventoryAddItem();
+            invadd.reftoinventory = this;
+            this.Hide();
             if (invadd.ShowDialog() == DialogResult.OK)
             {
-                this.Show();
+                
             }
 
 
@@ -50,46 +42,40 @@ namespace WindowsFormsApp2
 
         private void Inventorycs_Load(object sender, EventArgs e)
         {
-            String sqlString = "Select * from items";
-            String connString = "server=127.0.0.1;uid=root;pwd=root;database=radio";
-
-            MySqlConnection my_conn = new MySqlConnection(connString);
-            MySqlCommand my_command = new MySqlCommand(sqlString, my_conn);
-            MySqlDataAdapter my_adapter = new MySqlDataAdapter(my_command);
-
-            dataGridView1.RowTemplate.Height = 60;
-            dataGridView1.AllowUserToAddRows = false;
-
-            DataTable dt = new DataTable();
-            my_adapter.Fill(dt);
-            
-            dataGridView1.DataSource = dt;
-            DataGridViewImageColumn imgCol = new DataGridViewImageColumn();
-            imgCol = (DataGridViewImageColumn)dataGridView1.Columns[5];
-            imgCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
-
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-
-            my_adapter.Dispose();
-            //---------------------------
-            my_conn.Open();
-
-            /**
-            String sqlString1 = "Select * from film";
-            MySqlCommand my_command1 = new MySqlCommand(sqlString1, my_conn);
-
-            MySqlDataReader my_reader = my_command1.ExecuteReader();
-
-            while (my_reader.Read())
+            try
             {
-                textBox1.Text = textBox1.Text + my_reader.GetString("title") + ", ";
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("Select * from items", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                dataGridView1.DataSource = dt;
+
+                DataGridViewImageColumn imgCol = new DataGridViewImageColumn();
+                imgCol = (DataGridViewImageColumn)dataGridView1.Columns[5];
+                imgCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
+
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                conn.Close();
+
+
+                dataGridView1.Columns[0].Visible = false;
+                foreach (DataGridViewColumn ya in dataGridView1.Columns)
+                {
+                    ya.SortMode = DataGridViewColumnSortMode.NotSortable;
+                    ya.Width = 100;
+                }
+                foreach (DataGridViewRow ro in dataGridView1.Rows)
+                {
+                    ro.Height = 60;
+                }
             }
-
-            my_reader.Close();
-            **/
-            my_conn.Close();
-
+            catch (Exception ee)
+            {
+                MessageBox.Show("Nah!" + ee);
+                conn.Close();
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -99,9 +85,15 @@ namespace WindowsFormsApp2
             if (check == DialogResult.Yes)
             {
                 this.Hide();
-                refToDash.Show();
                 
             }
+        }
+
+        private void Inventorycs_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //refToDash.Show();
+            Main ma = new Main();
+            ma.Show();
         }
     }
 }

@@ -14,6 +14,7 @@ namespace WindowsFormsApp2
 {
     public partial class InventoryAddItem : Form
     {
+        public Inventorycs reftoinventory { get; set; }
         MySqlConnection connection = new MySqlConnection("datasource=localhost; port=3306;username=root; password=root;database=radio");
 
         public InventoryAddItem()
@@ -68,18 +69,6 @@ namespace WindowsFormsApp2
             this.DialogResult = DialogResult.OK;
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog opf = new OpenFileDialog();
-            opf.Filter = "Choose Image(*.JPG;*.PNG;*)|*.jpg;*.png;";
-            
-
-            if(opf.ShowDialog() == DialogResult.OK)
-            {
-                pictureBox1.Image = Image.FromFile(opf.FileName);
-            }
-
-        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -87,6 +76,23 @@ namespace WindowsFormsApp2
             Inventorycs inv = new Inventorycs();
             inv.ShowDialog();
             this.Close();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opf = new OpenFileDialog();
+            opf.Filter = "Choose Image(*.JPG;*.PNG;*)|*.jpg;*.png;";
+
+
+            if (opf.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image = Image.FromFile(opf.FileName);
+            }
+        }
+
+        private void InventoryAddItem_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            reftoinventory.Show();
         }
     }
 }
