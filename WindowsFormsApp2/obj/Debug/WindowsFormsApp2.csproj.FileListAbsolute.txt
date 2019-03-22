@@ -44,3 +44,5 @@ C:\Users\ainzb\Desktop\Subjects\SAD-Shainna\sadlife\WindowsFormsApp2\obj\Debug\W
 C:\Users\ainzb\Desktop\Subjects\SAD-Shainna\sadlife\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.CopyComplete
 C:\Users\ainzb\Desktop\Subjects\SAD-Shainna\sadlife\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
 C:\Users\ainzb\Desktop\Subjects\SAD-Shainna\sadlife\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
+C:\Users\ainzb\Desktop\Subjects\SAD-Shainna\sadlife\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.InventoryEditItem.resources
+C:\Users\ainzb\Desktop\Subjects\SAD-Shainna\sadlife\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.filter.resources
