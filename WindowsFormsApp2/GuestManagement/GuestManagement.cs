@@ -239,6 +239,15 @@ namespace WindowsFormsApp2
                 LoadData_ProgramSeg();
             }
         }
-       
+
+        /**
+        public void Refresh_DGV()
+        {
+            DGV_Guest.CellEnter -= DGV_Guest_CellEnter;
+            LoadData_Guest();
+            DGV_Guest.CellEnter += DGV_Supplier_CellEnter;
+            DGV_Guest.Focus();
+        }
+        **/
     }
 }

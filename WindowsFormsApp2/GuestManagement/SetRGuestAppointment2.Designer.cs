@@ -60,7 +60,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(-9, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1191, 73);
+            this.panel1.Size = new System.Drawing.Size(1388, 73);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -229,7 +229,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(666, 546);
+            this.btnBack.Location = new System.Drawing.Point(926, 556);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(206, 52);
             this.btnBack.TabIndex = 10;
@@ -239,7 +239,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(904, 546);
+            this.button2.Location = new System.Drawing.Point(1138, 556);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(206, 52);
             this.button2.TabIndex = 11;
@@ -261,14 +261,15 @@
             this.DGV_Prog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV_Prog.Location = new System.Drawing.Point(578, 131);
             this.DGV_Prog.Name = "DGV_Prog";
-            this.DGV_Prog.Size = new System.Drawing.Size(587, 394);
+            this.DGV_Prog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGV_Prog.Size = new System.Drawing.Size(783, 394);
             this.DGV_Prog.TabIndex = 12;
             // 
             // SetRGuestAppointment2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1177, 634);
+            this.ClientSize = new System.Drawing.Size(1373, 754);
             this.Controls.Add(this.DGV_Prog);
             this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.button2);

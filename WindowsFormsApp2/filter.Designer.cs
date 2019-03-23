@@ -40,13 +40,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.rbPrice = new System.Windows.Forms.RadioButton();
-            this.rbName = new System.Windows.Forms.RadioButton();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -59,7 +54,7 @@
             this.button1.Location = new System.Drawing.Point(14, 14);
             this.button1.Margin = new System.Windows.Forms.Padding(5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(740, 335);
+            this.button1.Size = new System.Drawing.Size(602, 335);
             this.button1.TabIndex = 0;
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -69,7 +64,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 22F);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(340, 27);
+            this.label1.Location = new System.Drawing.Point(260, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 41);
             this.label1.TabIndex = 1;
@@ -118,7 +113,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 17F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(111, 81);
+            this.label2.Location = new System.Drawing.Point(107, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 31);
             this.label2.TabIndex = 5;
@@ -129,7 +124,7 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(94)))), ((int)(((byte)(130)))));
             this.panel2.Controls.Add(this.rbDesc);
             this.panel2.Controls.Add(this.rbAsc);
-            this.panel2.Location = new System.Drawing.Point(273, 118);
+            this.panel2.Location = new System.Drawing.Point(346, 118);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(220, 132);
             this.panel2.TabIndex = 5;
@@ -167,7 +162,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 17F);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(345, 81);
+            this.label3.Location = new System.Drawing.Point(411, 81);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 31);
             this.label3.TabIndex = 6;
@@ -181,7 +176,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.button2.Location = new System.Drawing.Point(385, 287);
+            this.button2.Location = new System.Drawing.Point(309, 287);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(131, 42);
             this.button2.TabIndex = 7;
@@ -197,7 +192,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.button3.Location = new System.Drawing.Point(248, 287);
+            this.button3.Location = new System.Drawing.Point(172, 287);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(131, 42);
             this.button3.TabIndex = 8;
@@ -205,63 +200,12 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(94)))), ((int)(((byte)(130)))));
-            this.panel3.Controls.Add(this.rbPrice);
-            this.panel3.Controls.Add(this.rbName);
-            this.panel3.Location = new System.Drawing.Point(499, 118);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(220, 132);
-            this.panel3.TabIndex = 6;
-            // 
-            // rbPrice
-            // 
-            this.rbPrice.AutoSize = true;
-            this.rbPrice.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
-            this.rbPrice.ForeColor = System.Drawing.Color.White;
-            this.rbPrice.Location = new System.Drawing.Point(38, 73);
-            this.rbPrice.Name = "rbPrice";
-            this.rbPrice.Size = new System.Drawing.Size(111, 29);
-            this.rbPrice.TabIndex = 4;
-            this.rbPrice.TabStop = true;
-            this.rbPrice.Text = "Item Price";
-            this.rbPrice.UseVisualStyleBackColor = true;
-            // 
-            // rbName
-            // 
-            this.rbName.AutoSize = true;
-            this.rbName.Checked = true;
-            this.rbName.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
-            this.rbName.ForeColor = System.Drawing.Color.White;
-            this.rbName.Location = new System.Drawing.Point(38, 22);
-            this.rbName.Name = "rbName";
-            this.rbName.Size = new System.Drawing.Size(122, 29);
-            this.rbName.TabIndex = 3;
-            this.rbName.TabStop = true;
-            this.rbName.Text = "Item Name";
-            this.rbName.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semilight", 17F);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(544, 81);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 31);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "By Column";
-            // 
             // filter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.ClientSize = new System.Drawing.Size(767, 363);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.panel3);
+            this.ClientSize = new System.Drawing.Size(630, 363);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label3);
@@ -280,8 +224,6 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -301,9 +243,5 @@
         public System.Windows.Forms.RadioButton rbInactive;
         public System.Windows.Forms.RadioButton rbDesc;
         public System.Windows.Forms.RadioButton rbAsc;
-        private System.Windows.Forms.Panel panel3;
-        public System.Windows.Forms.RadioButton rbPrice;
-        public System.Windows.Forms.RadioButton rbName;
-        private System.Windows.Forms.Label label4;
     }
 }
