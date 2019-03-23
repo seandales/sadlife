@@ -32,18 +32,13 @@ namespace WindowsFormsApp2
         #region load datagridview
         public void refresh_inventory()
         {
-            DataGridViewImageColumn imgCol;
             try
             {
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand("Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active'", conn);
-                MySqlCommand comm2 = new MySqlCommand("Select image, status from items WHERE status = 'Active'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                MySqlDataAdapter adp2 = new MySqlDataAdapter(comm2);
                 DataTable dt = new DataTable();
-                DataTable dt2 = new DataTable();
                 adp.Fill(dt);
-                adp2.Fill(dt2);
 
                 dataGridView1.DataSource = dt;
                 
@@ -52,33 +47,7 @@ namespace WindowsFormsApp2
                     dataGridView1.Columns["itemID"].Visible = false;
                     dataGridView1.Columns["Status"].Visible = false;
                 }
-                if (dt2.Rows.Count > 0)
-                {
-                    if (once)
-                    {
-                        imgCol = new DataGridViewImageColumn();
-                        imgCol.Name = "image";
-                        imgCol.HeaderText = "Images";
-                        imgCol.DataPropertyName = "image";
-                        imgCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
-                        dataGridView1.Columns.Add(imgCol);
-                        once = false;
-                    }
-
-                    for (int i = 0; i < dt2.Rows.Count; i++)
-                    {
-                        //MessageBox.Show("| |" + dt2.Rows[i]["image"].ToString() + "| |");
-                        if (dt2.Rows[i]["image"].ToString().Equals(null))
-                        {
-                            byte[] img2 = (byte[])dt2.Rows[0]["image"];
-                            MemoryStream ms = new MemoryStream(img2);
-                            ms.Read(img2, 0, img2.Length);
-                            pictureBox1.Image = System.Drawing.Image.FromStream(ms, true);
-                        }
-                        dataGridView1.Rows[i].Cells[5].Value = dt2.Rows[i]["image"];
-                    }
-
-                }
+                
                 conn.Close();
                 foreach (DataGridViewColumn ya in dataGridView1.Columns)
                 {
@@ -97,20 +66,15 @@ namespace WindowsFormsApp2
             }
         }
         // cmd = whole thing cmd2 = for image
-        public void filter_inventory( string cmd, string cmd2)
+        public void filter_inventory( string cmd)
         {
-            DataGridViewImageColumn imgCol;
             try
             {
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand(cmd, conn);
-                MySqlCommand comm2 = new MySqlCommand(cmd2, conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                MySqlDataAdapter adp2 = new MySqlDataAdapter(comm2);
                 DataTable dt = new DataTable();
-                DataTable dt2 = new DataTable();
                 adp.Fill(dt);
-                adp2.Fill(dt2);
 
                 dataGridView1.DataSource = dt;
 
@@ -119,33 +83,7 @@ namespace WindowsFormsApp2
                     dataGridView1.Columns["itemID"].Visible = false;
                     dataGridView1.Columns["Status"].Visible = false;
                 }
-                if (dt2.Rows.Count > 0)
-                {
-                    if (once)
-                    {
-                        imgCol = new DataGridViewImageColumn();
-                        imgCol.Name = "image";
-                        imgCol.HeaderText = "Images";
-                        imgCol.DataPropertyName = "image";
-                        imgCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
-                        dataGridView1.Columns.Add(imgCol);
-                        once = false;
-                    }
-
-                    for (int i = 0; i < dt2.Rows.Count; i++)
-                    {
-                        //MessageBox.Show("| |" + dt2.Rows[i]["image"].ToString() + "| |");
-                        if (dt2.Rows[i]["image"].ToString().Equals(null))
-                        {
-                            byte[] img2 = (byte[])dt2.Rows[0]["image"];
-                            MemoryStream ms = new MemoryStream(img2);
-                            ms.Read(img2, 0, img2.Length);
-                            pictureBox1.Image = System.Drawing.Image.FromStream(ms, true);
-                        }
-                        dataGridView1.Rows[i].Cells[5].Value = dt2.Rows[i]["image"];
-                    }
-
-                }
+                
                 conn.Close();
                 foreach (DataGridViewColumn ya in dataGridView1.Columns)
                 {
@@ -165,18 +103,13 @@ namespace WindowsFormsApp2
         }
         public void search_inventory(string search)
         {
-            DataGridViewImageColumn imgCol;
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' AND itemName LIKE '%"+ search +"%'", conn);
-                MySqlCommand comm2 = new MySqlCommand("Select image, status from items WHERE status = 'Active' AND itemName LIKE '%" + search + "%'", conn);
+                MySqlCommand comm = new MySqlCommand("Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' AND itemName LIKE '%"+ search + "%' OR description LIKE '%" + search + "%' OR price LIKE '%" + search + "%'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                MySqlDataAdapter adp2 = new MySqlDataAdapter(comm2);
                 DataTable dt = new DataTable();
-                DataTable dt2 = new DataTable();
                 adp.Fill(dt);
-                adp2.Fill(dt2);
 
                 dataGridView1.DataSource = dt;
 
@@ -185,33 +118,7 @@ namespace WindowsFormsApp2
                     dataGridView1.Columns["itemID"].Visible = false;
                     dataGridView1.Columns["Status"].Visible = false;
                 }
-                if (dt2.Rows.Count > 0)
-                {
-                    if (once)
-                    {
-                        imgCol = new DataGridViewImageColumn();
-                        imgCol.Name = "image";
-                        imgCol.HeaderText = "Images";
-                        imgCol.DataPropertyName = "image";
-                        imgCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
-                        dataGridView1.Columns.Add(imgCol);
-                        once = false;
-                    }
-
-                    for (int i = 0; i < dt2.Rows.Count; i++)
-                    {
-                        //MessageBox.Show("| |" + dt2.Rows[i]["image"].ToString() + "| |");
-                        if (dt2.Rows[i]["image"].ToString().Equals(null))
-                        {
-                            byte[] img2 = (byte[])dt2.Rows[0]["image"];
-                            MemoryStream ms = new MemoryStream(img2);
-                            ms.Read(img2, 0, img2.Length);
-                            pictureBox1.Image = System.Drawing.Image.FromStream(ms, true);
-                        }
-                        dataGridView1.Rows[i].Cells[5].Value = dt2.Rows[i]["image"];
-                    }
-
-                }
+                
                 conn.Close();
                 foreach (DataGridViewColumn ya in dataGridView1.Columns)
                 {
@@ -293,25 +200,21 @@ namespace WindowsFormsApp2
                 if (fil.rbActive.Checked && fil.rbAsc.Checked)
                 {
                     strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Name ASC";
-                    imgquery = "Select image, status, itemName from items WHERE status = 'Active' ORDER BY itemName ASC";
                 }
                 else if (fil.rbActive.Checked && fil.rbDesc.Checked)
                 {
                     strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Name DESC";
-                    imgquery = "Select image, status, itemName from items WHERE status = 'Active' ORDER BY itemName DESC";
                 }
                 else if (fil.rbInactive.Checked && fil.rbAsc.Checked)
                 {
                     strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Name ASC";
-                    imgquery = "Select image, status, itemName from items WHERE status = 'Inactive' ORDER BY itemName ASC";
                 }
                 else if (fil.rbInactive.Checked && fil.rbDesc.Checked)
                 {
                     strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Name DESC";
-                    imgquery = "Select image, status, itemName from items WHERE status = 'Inactive' ORDER BY itemName DESC";
                 }
                 //MessageBox.Show(strquery);
-                filter_inventory(strquery, imgquery);
+                filter_inventory(strquery);
             }
         }
         private void btnSearch_Click(object sender, EventArgs e)
