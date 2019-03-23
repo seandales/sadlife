@@ -192,28 +192,19 @@ namespace WindowsFormsApp2
         private void filter_Click(object sender, EventArgs e)
         {
             string strquery = "";
-            string imgquery = "";
             filter fil = new filter();
             fil.reftoinventory = this;
             if (fil.ShowDialog() == DialogResult.OK)
             {
-                if (fil.rbActive.Checked && fil.rbAsc.Checked)
-                {
-                    strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Name ASC";
-                }
-                else if (fil.rbActive.Checked && fil.rbDesc.Checked)
-                {
-                    strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Name DESC";
-                }
-                else if (fil.rbInactive.Checked && fil.rbAsc.Checked)
-                {
-                    strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Name ASC";
-                }
-                else if (fil.rbInactive.Checked && fil.rbDesc.Checked)
-                {
-                    strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Name DESC";
-                }
-                //MessageBox.Show(strquery);
+                if (fil.rbActive.Checked && fil.rbAsc.Checked && fil.rbName.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Name ASC";
+                else if (fil.rbActive.Checked && fil.rbAsc.Checked && fil.rbPrice.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Price ASC";
+                else if (fil.rbActive.Checked && fil.rbDesc.Checked && fil.rbName.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Name DESC";
+                else if (fil.rbActive.Checked && fil.rbDesc.Checked && fil.rbPrice.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Price DESC";
+                else if (fil.rbInactive.Checked && fil.rbAsc.Checked && fil.rbName.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Name ASC";
+                else if (fil.rbInactive.Checked && fil.rbAsc.Checked && fil.rbPrice.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Price ASC";
+                else if (fil.rbInactive.Checked && fil.rbDesc.Checked && fil.rbName.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Name DESC";
+                else if (fil.rbInactive.Checked && fil.rbDesc.Checked && fil.rbPrice.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Price DESC";
+
                 filter_inventory(strquery);
             }
         }
