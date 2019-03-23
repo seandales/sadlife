@@ -174,6 +174,7 @@ namespace WindowsFormsApp2
         }
         private void btnRemove_Click(object sender, EventArgs e)
         {
+            currID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
             try
             {
                 conn.Open();
@@ -187,36 +188,39 @@ namespace WindowsFormsApp2
                 conn.Close();
             }
             refresh_inventory();
-            btnRemove.Enabled = false;
+            
         }
         private void filter_Click(object sender, EventArgs e)
         {
             string strquery = "";
-            string imgquery = "";
             filter fil = new filter();
             fil.reftoinventory = this;
             if (fil.ShowDialog() == DialogResult.OK)
             {
-                if (fil.rbActive.Checked && fil.rbAsc.Checked)
-                {
-                    strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Name ASC";
-                }
-                else if (fil.rbActive.Checked && fil.rbDesc.Checked)
-                {
-                    strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Name DESC";
-                }
-                else if (fil.rbInactive.Checked && fil.rbAsc.Checked)
+                if (fil.rbActive.Checked && fil.rbAsc.Checked && fil.rbName.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Name ASC";
+                else if (fil.rbActive.Checked && fil.rbAsc.Checked && fil.rbPrice.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Price ASC";
+                else if (fil.rbActive.Checked && fil.rbDesc.Checked && fil.rbName.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Name DESC";
+                else if (fil.rbActive.Checked && fil.rbDesc.Checked && fil.rbPrice.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Price DESC";
+                else if (fil.rbInactive.Checked && fil.rbAsc.Checked && fil.rbName.Checked)
                 {
                     strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Name ASC";
                 }
-                else if (fil.rbInactive.Checked && fil.rbDesc.Checked)
+                else if (fil.rbInactive.Checked && fil.rbAsc.Checked && fil.rbPrice.Checked)
+                {
+                    strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Price ASC";
+                }
+                else if (fil.rbInactive.Checked && fil.rbDesc.Checked && fil.rbName.Checked)
                 {
                     strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Name DESC";
                 }
-                //MessageBox.Show(strquery);
+                else if (fil.rbInactive.Checked && fil.rbDesc.Checked && fil.rbPrice.Checked)
+                {
+                    strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Price DESC";
+                }
                 filter_inventory(strquery);
             }
         }
+        //from filter to change 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             search_inventory(searchBar.Text);
@@ -257,8 +261,8 @@ namespace WindowsFormsApp2
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //MessageBox.Show(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-            currID = int.Parse(dataGridView1.SelectedCells[0].Value.ToString());
-            btnRemove.Enabled = true;
+            //currID = int.Parse(dataGridView1.SelectedCells[0].Value.ToString());
+            //btnRemove.Enabled = true;
 
         }
 
