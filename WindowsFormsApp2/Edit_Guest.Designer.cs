@@ -34,12 +34,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tbFname = new System.Windows.Forms.TextBox();
+            this.tbLname = new System.Windows.Forms.TextBox();
+            this.tbContact = new System.Windows.Forms.TextBox();
+            this.tbAddress = new System.Windows.Forms.TextBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnDone = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -86,7 +84,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(431, 117);
+            this.label4.Location = new System.Drawing.Point(431, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 5;
@@ -101,50 +99,34 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Contact Number:";
             // 
-            // label6
+            // tbFname
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(431, 160);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Status:";
+            this.tbFname.Location = new System.Drawing.Point(167, 117);
+            this.tbFname.Name = "tbFname";
+            this.tbFname.Size = new System.Drawing.Size(186, 20);
+            this.tbFname.TabIndex = 1;
             // 
-            // textBox1
+            // tbLname
             // 
-            this.textBox1.Location = new System.Drawing.Point(167, 117);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(186, 20);
-            this.textBox1.TabIndex = 1;
+            this.tbLname.Location = new System.Drawing.Point(167, 157);
+            this.tbLname.Name = "tbLname";
+            this.tbLname.Size = new System.Drawing.Size(186, 20);
+            this.tbLname.TabIndex = 2;
             // 
-            // textBox2
+            // tbContact
             // 
-            this.textBox2.Location = new System.Drawing.Point(167, 157);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(186, 20);
-            this.textBox2.TabIndex = 2;
+            this.tbContact.Location = new System.Drawing.Point(167, 202);
+            this.tbContact.Name = "tbContact";
+            this.tbContact.Size = new System.Drawing.Size(186, 20);
+            this.tbContact.TabIndex = 3;
             // 
-            // textBox3
+            // tbAddress
             // 
-            this.textBox3.Location = new System.Drawing.Point(167, 202);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(186, 20);
-            this.textBox3.TabIndex = 3;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(481, 117);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(186, 20);
-            this.textBox6.TabIndex = 4;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(481, 157);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(186, 21);
-            this.comboBox1.TabIndex = 7;
+            this.tbAddress.Location = new System.Drawing.Point(481, 114);
+            this.tbAddress.Multiline = true;
+            this.tbAddress.Name = "tbAddress";
+            this.tbAddress.Size = new System.Drawing.Size(209, 56);
+            this.tbAddress.TabIndex = 4;
             // 
             // btnBack
             // 
@@ -164,6 +146,7 @@
             this.btnDone.TabIndex = 9;
             this.btnDone.Text = "DONE";
             this.btnDone.UseVisualStyleBackColor = true;
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
             // Edit_Guest
             // 
@@ -172,12 +155,10 @@
             this.ClientSize = new System.Drawing.Size(755, 332);
             this.Controls.Add(this.btnDone);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.tbAddress);
+            this.Controls.Add(this.tbContact);
+            this.Controls.Add(this.tbLname);
+            this.Controls.Add(this.tbFname);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
@@ -185,6 +166,8 @@
             this.Controls.Add(this.panel1);
             this.Name = "Edit_Guest";
             this.Text = "Edit Guest Details";
+            this.Deactivate += new System.EventHandler(this.Edit_Guest_Deactivate);
+            this.Load += new System.EventHandler(this.Edit_Guest_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -200,12 +183,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox tbFname;
+        private System.Windows.Forms.TextBox tbLname;
+        private System.Windows.Forms.TextBox tbContact;
+        private System.Windows.Forms.TextBox tbAddress;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnDone;
     }

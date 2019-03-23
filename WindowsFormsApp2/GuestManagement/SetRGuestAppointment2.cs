@@ -63,7 +63,12 @@ namespace WindowsFormsApp2
 
         private void dtpDate_ValueChanged(object sender, EventArgs e)
         {
+            String query = "SELECT FROM radio_program where ";
+            MySqlCommand my_command = new MySqlCommand(query, conn);
+            MySqlDataAdapter my_adapter = new MySqlDataAdapter(my_command);
 
+            DataTable dt = new DataTable();
+            my_adapter.Fill(dt);
         }
 
         public void LoadProgramTopics()

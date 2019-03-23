@@ -201,8 +201,20 @@ namespace WindowsFormsApp2
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Edit_Guest EG = new Edit_Guest();
+            int clientID = int.Parse(DGV_Guest.CurrentRow.Cells["clientID"].Value.ToString());
+            string fname = DGV_Guest.CurrentRow.Cells["fname"].Value.ToString();
+            string lname = DGV_Guest.CurrentRow.Cells["lname"].Value.ToString();
+            int contactNum = int.Parse(DGV_Guest.CurrentRow.Cells["contactNum"].Value.ToString());
+            string address = DGV_Guest.CurrentRow.Cells["address"].Value.ToString();
+            string status = DGV_Guest.CurrentRow.Cells["status"].Value.ToString();
+            Tuple<int, string, string, int, string, string> Guest_details;
+            Guest_details = new Tuple<int, string, string, int, string, string>(clientID, fname, lname, contactNum, address, status);
+
+            Edit_Guest EG = new Edit_Guest(this);
+            EG.Gu_Details = Guest_details; 
             EG.Show();
+
+
         }
 
         private void btnAdd_Guest_Click(object sender, EventArgs e)

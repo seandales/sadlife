@@ -249,18 +249,19 @@
             // dtpDate
             // 
             this.dtpDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDate.Location = new System.Drawing.Point(675, 96);
+            this.dtpDate.Location = new System.Drawing.Point(578, 96);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(327, 29);
+            this.dtpDate.Size = new System.Drawing.Size(515, 29);
             this.dtpDate.TabIndex = 11;
             this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
             // DGV_Prog
             // 
+            this.DGV_Prog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_Prog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV_Prog.Location = new System.Drawing.Point(578, 131);
             this.DGV_Prog.Name = "DGV_Prog";
-            this.DGV_Prog.Size = new System.Drawing.Size(515, 394);
+            this.DGV_Prog.Size = new System.Drawing.Size(587, 394);
             this.DGV_Prog.TabIndex = 12;
             // 
             // SetRGuestAppointment2

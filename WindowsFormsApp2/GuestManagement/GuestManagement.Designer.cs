@@ -194,7 +194,7 @@
             // 
             this.DGV_Guest.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_Guest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_Guest.Location = new System.Drawing.Point(581, 148);
+            this.DGV_Guest.Location = new System.Drawing.Point(580, 148);
             this.DGV_Guest.Name = "DGV_Guest";
             this.DGV_Guest.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV_Guest.Size = new System.Drawing.Size(732, 180);
