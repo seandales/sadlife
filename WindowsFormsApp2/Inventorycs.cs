@@ -18,7 +18,7 @@ namespace WindowsFormsApp2
         public MySqlConnection conn;
         public Boolean once = true;
         public int currID;
-
+        public Boolean btn_delorrec = true;
         public Inventorycs()
         {
             InitializeComponent();
@@ -46,6 +46,15 @@ namespace WindowsFormsApp2
                 {
                     dataGridView1.Columns["itemID"].Visible = false;
                     dataGridView1.Columns["Status"].Visible = false;
+                    btnRemove.Enabled = true;
+                    btnUpdate.Enabled = true;
+                    btn_delorrec = true;
+                    btnRemove.BackgroundImage = WindowsFormsApp2.Properties.Resources.delete_button;
+                }
+                else
+                {
+                    btnRemove.Enabled = false;
+                    btnUpdate.Enabled = false;
                 }
                 
                 conn.Close();
@@ -82,8 +91,15 @@ namespace WindowsFormsApp2
                 {
                     dataGridView1.Columns["itemID"].Visible = false;
                     dataGridView1.Columns["Status"].Visible = false;
+                    btnRemove.Enabled = true;
+                    btnUpdate.Enabled = true;
                 }
-                
+                else
+                {
+                    btnRemove.Enabled = false;
+                    btnUpdate.Enabled = false;
+                }
+
                 conn.Close();
                 foreach (DataGridViewColumn ya in dataGridView1.Columns)
                 {
@@ -117,8 +133,15 @@ namespace WindowsFormsApp2
                 {
                     dataGridView1.Columns["itemID"].Visible = false;
                     dataGridView1.Columns["Status"].Visible = false;
+                    btnRemove.Enabled = true;
+                    btnUpdate.Enabled = true;
                 }
-                
+                else
+                {
+                    btnRemove.Enabled = false;
+                    btnUpdate.Enabled = false;
+                }
+
                 conn.Close();
                 foreach (DataGridViewColumn ya in dataGridView1.Columns)
                 {
@@ -175,10 +198,21 @@ namespace WindowsFormsApp2
         private void btnRemove_Click(object sender, EventArgs e)
         {
             currID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            string strquery = "";
+            if (btn_delorrec)
+            {
+                //delete
+                strquery = "UPDATE items SET status='Inactive' WHERE itemID = '" + currID + "';";
+            }
+            else
+            {
+                //recover
+                strquery = "UPDATE items SET status='Active' WHERE itemID = '" + currID + "';";
+            }
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("UPDATE items SET status='Inactive' WHERE itemID = '" + currID + "';", conn);
+                MySqlCommand comm = new MySqlCommand(strquery, conn);
                 comm.ExecuteNonQuery();
                 conn.Close();
             }
@@ -188,7 +222,6 @@ namespace WindowsFormsApp2
                 conn.Close();
             }
             refresh_inventory();
-            
         }
         private void filter_Click(object sender, EventArgs e)
         {
@@ -201,22 +234,22 @@ namespace WindowsFormsApp2
                 else if (fil.rbActive.Checked && fil.rbAsc.Checked && fil.rbPrice.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Price ASC";
                 else if (fil.rbActive.Checked && fil.rbDesc.Checked && fil.rbName.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Name DESC";
                 else if (fil.rbActive.Checked && fil.rbDesc.Checked && fil.rbPrice.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Active' ORDER BY Price DESC";
-                else if (fil.rbInactive.Checked && fil.rbAsc.Checked && fil.rbName.Checked)
+                else if (fil.rbInactive.Checked && fil.rbAsc.Checked && fil.rbName.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Name ASC";
+                else if (fil.rbInactive.Checked && fil.rbAsc.Checked && fil.rbPrice.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Price ASC";
+                else if (fil.rbInactive.Checked && fil.rbDesc.Checked && fil.rbName.Checked) strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Name DESC";
+                else if (fil.rbInactive.Checked && fil.rbDesc.Checked && fil.rbPrice.Checked)strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Price DESC";
+
+                if (fil.rbActive.Checked)
                 {
-                    strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Name ASC";
+                    btnRemove.BackgroundImage = WindowsFormsApp2.Properties.Resources.delete_button;
+                    btn_delorrec = true;
                 }
-                else if (fil.rbInactive.Checked && fil.rbAsc.Checked && fil.rbPrice.Checked)
+                else
                 {
-                    strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Price ASC";
+                    btnRemove.BackgroundImage = WindowsFormsApp2.Properties.Resources.restore;
+                    btn_delorrec = false;
                 }
-                else if (fil.rbInactive.Checked && fil.rbDesc.Checked && fil.rbName.Checked)
-                {
-                    strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Name DESC";
-                }
-                else if (fil.rbInactive.Checked && fil.rbDesc.Checked && fil.rbPrice.Checked)
-                {
-                    strquery = "Select itemID, itemName AS Name, description AS Description, price AS Price, status AS Status from items WHERE Status = 'Inactive' ORDER BY Price DESC";
-                }
+
                 filter_inventory(strquery);
             }
         }

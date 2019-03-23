@@ -179,6 +179,7 @@
     <Content Include="Resources\001-writing.png" />
     <Content Include="Resources\002-delete-button.png" />
     <Content Include="Resources\003-add.png" />
+    <None Include="Resources\restore.png" />
     <None Include="Resources\initial-image.png" />
     <None Include="Resources\delete-button.png" />
     <None Include="Resources\writing.png" />
