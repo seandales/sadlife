@@ -220,7 +220,7 @@ namespace WindowsFormsApp2
                 filter_inventory(strquery);
             }
         }
-        //from filter to change 
+         
         private void btnSearch_Click(object sender, EventArgs e)
         {
             search_inventory(searchBar.Text);
