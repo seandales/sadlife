@@ -68,6 +68,12 @@
     <Compile Include="Edit_Guest.Designer.cs">
       <DependentUpon>Edit_Guest.cs</DependentUpon>
     </Compile>
+    <Compile Include="filter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="filter.Designer.cs">
+      <DependentUpon>filter.cs</DependentUpon>
+    </Compile>
     <Compile Include="GuestManagement\GuestManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,12 @@
     </Compile>
     <Compile Include="Inventorycs.Designer.cs">
       <DependentUpon>Inventorycs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryEditItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryEditItem.Designer.cs">
+      <DependentUpon>InventoryEditItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -115,6 +127,9 @@
     <EmbeddedResource Include="Edit_Guest.resx">
       <DependentUpon>Edit_Guest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="filter.resx">
+      <DependentUpon>filter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GuestManagement\GuestManagement.resx">
       <DependentUpon>GuestManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventorycs.resx">
       <DependentUpon>Inventorycs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryEditItem.resx">
+      <DependentUpon>InventoryEditItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -161,6 +179,7 @@
     <Content Include="Resources\001-writing.png" />
     <Content Include="Resources\002-delete-button.png" />
     <Content Include="Resources\003-add.png" />
+    <None Include="Resources\initial-image.png" />
     <None Include="Resources\delete-button.png" />
     <None Include="Resources\writing.png" />
     <None Include="Resources\add.png" />
