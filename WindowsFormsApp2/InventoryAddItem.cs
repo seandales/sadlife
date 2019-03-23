@@ -16,8 +16,6 @@ namespace WindowsFormsApp2
     {
         public Inventorycs reftoinventory { get; set; }
         MySqlConnection conn;
-        public Boolean withIMG = false;
-        public byte[] img;
         public InventoryAddItem()
         {
 
@@ -27,20 +25,11 @@ namespace WindowsFormsApp2
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (withIMG)
-            {
-                MemoryStream ms = new MemoryStream();
-                pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                img = new byte[ms.Length];
-                ms.Read(img, 0, img.Length);
-                MessageBox.Show("" + img.Length);
-                withIMG = false;
-            }
             try
             {
                 conn.Open();
                 //INSERT INTO items (itemName, description, price, status, image) VALUES ('Pen', 'Tom B. Erichsen', '21', 'Active', 'img');
-                MySqlCommand command = new MySqlCommand("INSERT into items(itemName, description, price, status, image) values('" + tbName.Text + "','" + tbDesc.Text + "','" + tbPrice.Text + "','Active'" + ",'" + img + "')", conn);
+                MySqlCommand command = new MySqlCommand("INSERT into items(itemName, description, price, status) values('" + tbName.Text + "','" + tbDesc.Text + "','" + tbPrice.Text + "','Active'" + ")", conn);
 
                 if (command.ExecuteNonQuery() == 1) MessageBox.Show("Data Inserted");
                 else MessageBox.Show("Data not inserted");
@@ -51,20 +40,6 @@ namespace WindowsFormsApp2
                 conn.Close();
             }
             this.DialogResult = DialogResult.OK;
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            withIMG = true;
-            OpenFileDialog opf = new OpenFileDialog();
-            opf.Filter = "Choose Image(*.JPG;*.PNG;*)|*.jpg;*.png;";
-
-
-            if (opf.ShowDialog() == DialogResult.OK)
-            {
-                pictureBox1.Image = Image.FromFile(opf.FileName);
-                pictureBox1.Tag = opf.FileName;
-            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
